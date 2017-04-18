@@ -1,0 +1,37 @@
+{
+  "name": "events-bluebird",
+  "version": "1.0.0",
+  "author": {
+    "email": "fogine@opmbx.org"
+  },
+  "license": "GPL-3.0",
+  "description": "events.EventEmitter wrapper implements `emitAsync` method which awaits promises returned from event listeners",
+  "scripts": {
+    "tests": "./node_modules/.bin/mocha --ui bdd --colors --check-leaks -t 5000 --reporter spec 'tests/**/*.js'",
+    "test": "npm run tests",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec 'tests/**/*.js' -t 5000"
+  },
+  "keywords": [
+    "bluebird",
+    "evetns",
+    "EventEmitter",
+    "promise",
+    "await",
+    "chainable events",
+    "nodejs",
+    "node"
+  ],
+  "peerDependencies": {
+    "bluebird": ">=2.0"
+  },
+  "devDependencies": {
+    "bluebird": "^3.5.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "codeclimate-test-reporter": "^0.3.1",
+    "istanbul": "^0.4.3",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
+  }
+}
