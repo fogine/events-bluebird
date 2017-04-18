@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- "4.2.2"
+
+script:
+    - npm run-script tests
+    - npm run-script coverage
+
+after_script:
+    - codeclimate-test-reporter < ./coverage/lcov.info
+
+env:
+  global:
+      - COMMIT_AUTHOR_EMAIL: "fogine@opmbx.org"
