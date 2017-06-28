@@ -106,8 +106,10 @@ function emit(method, type) {
         });
     }
 
-    if (promiseCandidate instanceof Promise) {
-        return promiseCandidate.return(true);
+    if (promiseCandidate && typeof promiseCandidate.then === 'function') {
+        return promiseCandidate.then(function() {
+            return true;
+        });
     } else {
         return Promise.resolve(true);
     }
