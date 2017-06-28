@@ -1,4 +1,4 @@
-## FUTURE
+## v1.0.1
 
 * [FIXED] - use `promise.then` rather than `promise.return` method
 
