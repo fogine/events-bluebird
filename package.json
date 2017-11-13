@@ -21,6 +21,13 @@
     "nodejs",
     "node"
   ],
+  "files": [
+      "index.js",
+      "COPYRIGHT",
+      "CHANGELOG.md",
+      "LICENSE",
+      "README.md"
+  ],
   "peerDependencies": {
     "bluebird": ">=2.0"
   },
