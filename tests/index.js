@@ -137,6 +137,27 @@ describe('EventEmitter', function() {
             it('should return rejected primse with an Error when the `error` event is called with no arguments and asynchronously emitted but has no listeners', function() {
                 return this.emitter[method]('error').should.be.rejectedWith(Error);
             });
+
+            it('should call event listener with correct context (this) object if event has single listener', function() {
+                var spy = sinon.spy();
+                this.emitter.on('data', spy);
+
+                return this.emitter[method]('data').bind(this).then(function() {
+                    spy.should.have.been.calledOnce;
+                    spy.should.have.been.always.calledOn(this.emitter);
+                });
+            });
+
+            it('should call event listeners with correct context (this) object if event has multiple listeners', function() {
+                var spy = sinon.spy();
+                this.emitter.on('data', spy);
+                this.emitter.on('data', sinon.spy());//we don't care about second spy
+
+                return this.emitter[method]('data').bind(this).then(function() {
+                    spy.should.have.been.calledOnce;
+                    spy.should.have.been.always.calledOn(this.emitter);
+                });
+            });
         });
     });
 

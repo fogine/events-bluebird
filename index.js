@@ -60,9 +60,10 @@ EventEmitter.prototype.emitAsyncSeries = EventEmitter.prototype.emitAsync;
  * @return {Promise<boolean>}
  */
 function emit(method, type) {
-    var er, handler, len, args, i, events, promise;
+    var er, handler, len, args, i, events, promise, self;
     var doError = (type === 'error');
 
+    self = this;
     events = this._events;
     if (events)
         doError = (doError && events.error == null);
@@ -102,7 +103,7 @@ function emit(method, type) {
     else {
         var listeners = arrayClone(handler, handler.length);
         promiseCandidate = Promise[method](listeners, function(handler) {
-            return handler.apply(this, args);
+            return handler.apply(self, args);
         });
     }
 
