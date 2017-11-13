@@ -1,4 +1,4 @@
-## FUTURE
+## v1.0.2
 
 * [FIXED] - async listeners should always be called with the Emitter object as context (this keyword)
 
